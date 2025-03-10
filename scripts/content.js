@@ -1,6 +1,9 @@
 const cartItems = document.getElementsByClassName("a-link-normal sc-product-link sc-product-title aok-block");
 
 if (cartItems.length > 0) {
+    const popup=document.createElement('div');
+    popup.setAttribute("style","height:300px;width:300px;position:fixed;top:10px;right:10px;background-color: white; padding: 10px; border: 1px solid black; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 1000;color:red");
+    document.body.appendChild(popup);
     Array.from(cartItems).forEach(item => {
         let link = item.getAttribute("href");
         
@@ -29,7 +32,9 @@ if (cartItems.length > 0) {
                             }
                         });
                     
-                        console.log("Extracted Ingredients:", ingredientsText);
+                        const itemElement = document.createElement("p");
+                        itemElement.innerHTML = `<strong>Ingredients:</strong> ${ingredientsText}`;
+                        popup.appendChild(itemElement);
                     } else {
                         console.log("Product details table not found.");
                     }
