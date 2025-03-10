@@ -1,0 +1,21 @@
+{
+    "name": "Allergenie",
+    "version": "1.0.0",
+    "description": "Allergen detection tool for shopping online",
+    "permissions": ["activeTab", "scripting"],
+    "host_permissions": ["https://amazon.in/*"],
+    "manifest_version": 3,
+    "author": "Team Allergals",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Allergenie"
+    },
+    "content_scripts": [
+        {
+          "js": ["scripts/content.js"],
+          "matches": [
+            "https://www.amazon.in/*"
+          ]
+        }
+      ]
+}
