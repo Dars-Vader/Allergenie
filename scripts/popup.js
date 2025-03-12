@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const allergenInput = document.getElementById("allergenInput");
     const saveButton = document.getElementById("saveAllergens");
     const statusMessage = document.getElementById("status");
-    const flaggedList = document.getElementById("flaggedList");
     
     console.log("Popup initialized");
 
@@ -55,36 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Request current flagged products from active tab's content script
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
         if (tabs[0] && tabs[0].url.includes("amazon")) {
-            flaggedList.innerHTML = "<li>Checking for allergens...</li>";
             
             // Try to get results from content script
             chrome.tabs.sendMessage(tabs[0].id, {action: "rescan"}, (response) => {
                 // Handle potential error if content script isn't ready
                 if (chrome.runtime.lastError) {
-                    console.warn("Error sending initial message:", chrome.runtime.lastError);
-                    flaggedList.innerHTML = "<li>Please click 'Save & Scan' to check for allergens</li>";
-                }
+                    console.warn("Error sending initial message:", chrome.runtime.lastError);                }
             });
-        } else {
-            flaggedList.innerHTML = "<li>Please navigate to Amazon to check for allergens.</li>";
         }
     });
 
-    // Listen for flagged products from content script
-    chrome.runtime.onMessage.addListener((message) => {
-        console.log("Received message in popup:", message);
-
-        if (message.flaggedProducts !== undefined) {
-            if (message.flaggedProducts.length > 0) {
-                flaggedList.innerHTML = "";
-                message.flaggedProducts.forEach(product => {
-                    const li = document.createElement("li");
-                    li.innerHTML = `<strong>${product.title}</strong> contains: <span class="allergen">${product.allergens.join(", ")}</span>`;
-                    flaggedList.appendChild(li);
-                });
-            } else {
-                flaggedList.innerHTML = "<li>No allergens detected in search results.</li>";
-            }
-        }
-    });
 });

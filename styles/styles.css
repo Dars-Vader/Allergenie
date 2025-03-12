@@ -1,37 +1,104 @@
-/* Popup container */
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    width: 300px;
+    padding: 10px;
+    margin: 0;
+}
+
+h2 {
+    color: #43a047;
+    margin-top: 0;
+    font-size: 20px;
+}
+
+h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #43a047;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #2e7d32;
+}
+
+#status {
+    color: #43a047;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+#flaggedList {
+    padding-left: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 0;
+}
+
+#flaggedList li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.allergen {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* Popup styles for content script */
 .allergenie-popup {
     position: fixed;
-    top: 10px;
-    right: 10px;
-    width: 350px;
-    background: white;
-    border: 1px solid black;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    padding: 10px;
-    font-family: Arial, sans-serif;
-    z-index: 1000;
-    color: black;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: white;
+    border: 2px solid #43a047;
+    border-radius: 5px;
+    z-index: 9999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Header section */
 .allergenie-header {
+    background-color: #43a047;
+    color: white;
+    padding: 8px 10px;
     display: flex;
     justify-content: space-between;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    align-items: center;
 }
 
-/* Close button */
-#closePopup {
-    border: none;
+.allergenie-header button {
     background: none;
-    font-size: 18px;
+    border: none;
+    color: white;
     cursor: pointer;
+    font-size: 16px;
 }
 
-/* Warning for allergens */
+#allergenie-content {
+    padding: 10px;
+}
+
 .allergen-warning {
-    color: red;
+    color: #d32f2f;
     font-weight: bold;
 }

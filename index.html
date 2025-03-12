@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allergenie</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <h2>Allergenie</h2>
-    <label for="allergenInput">Enter allergens (comma-separated):</label>
-    <input type="text" id="allergenInput" placeholder="e.g., peanuts, gluten">
-    <button id="saveAllergens">Save</button>
-
-    <h3>Flagged Products:</h3>
-    <ul id="flaggedList"></ul>
-
+    <input type="text" id="allergenInput" placeholder="Enter allergens (comma-separated)">
+    <button id="saveAllergens">Save & Scan</button>
+    <p id="status"></p>
+    
     <script src="scripts/popup.js"></script>
 </body>
 </html>
